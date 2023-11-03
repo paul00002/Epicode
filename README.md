@@ -1,7 +1,7 @@
 Epicode
 # Epicode
 
-This is a repository where I post the various exercises from the Epicode course that began on 9/18/2023
+This is a repository where I post the various exercises from the Epicode course.
 
                            ____
                         ,;|||||\                       _________
