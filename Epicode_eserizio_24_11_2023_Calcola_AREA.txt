@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+
+
+float Triangolo(float D)
+{
+  return sqrt(pow(D,2)-pow(D/2,2));
+}
+
+float Cerchio(float D)
+{
+  return pow((D/2),2)*3.14;
+}
+
+float Quadrato(float D)
+{
+  return D*4;
+}
+
+int main()
+{   
+    float D=0;
+    printf("Inserire un volore numerico: ");
+    scanf("%f",&D);
+    
+        float AREA_CERCHIO=Cerchio(D);
+        float AREA_QUADRATO=Quadrato(D);
+        float AREA_Triangolo=Triangolo(D);
+        printf("AREA Triangolo: %.1lf \n",AREA_Triangolo);
+        printf("AREA Quadrato: %.1lf \n",AREA_QUADRATO);
+        printf("AREA Cerchio: %.1lf \n",AREA_CERCHIO);
+  
+    return 0;
+}
