@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <unistd.h>
+
+
+int Randoms (int lower, int upper, int count)
+{
+  srand (time (0));
+  return (rand () % (upper - lower + 1)) + lower;;
+}
+
+bool
+Presentazione (char A, char B)
+{
+  char R;
+  do
+    {
+      scanf (" %c", &R);
+
+      if (R == 'B')
+	{
+	  return true;
+	}
+    }
+  while (R != 'A');
+  return false;
+}
+
+int game (char domanda[20] ,char risposta)
+{
+  char R[100];
+  printf ("%s\n", domanda);
+  printf("Rispoti con solo una lettera: \n");
+  scanf (" %s", &R);
+  if (risposta == R[0])
+  {
+      return 1;
+  }
+  return 0;
+}
+
+int
+main ()
+{ 
+  int lower = 1, upper = 4, count = 1;
+  char array[5][60] = { 
+    "come ti chiami? \n A) paul \n B) alfo \n c) Michele\n",
+    "chi sei? \n \n A) pino \n B) paul \n c) Michele\n",
+    "ciao? \n \n A) paul \n B) alfo \n c) Michele\n",
+    "ehy? \n \n A) pino \n B) alfo \n c) paul\n",
+    "perche? \n \n A) paul \n B) alfo \n c) Michele\n"
+  };
+  char risposta[5] = "ABACA" ;
+  int punteggio = 0;
+  int numer_loop =0;
+  do{
+    numer_loop = Randoms(lower, upper, count);   
+  }
+  while(numer_loop < 2);
+  
+  printf("\e[1;1H\e[2J");
+  printf("--------------------------------------------- \n");
+  printf ("Hello User\n");
+  printf ("I want to play with you\n");
+  printf ("Do you want? \n\n");
+  printf ("A) inizia una partita\n\n");
+  printf ("B) Esci dal gioco\n\n");
+  printf("--------------------------------------------- \n");
+  if (Presentazione ('B', 'A'))
+    {
+      exit (EXIT_SUCCESS);
+    }
+    
+  printf("\e[1;1H\e[2J");
+  printf ("--------------------------------------------- \n");
+  printf ("rispondi alle domende \n Numero domande: %d\n", numer_loop);
+  printf ("--------------------------------------------- \n");
+  for (int i = 0; i < numer_loop; i++)
+    {
+      printf ("Domanda N^%d\n", i+1);
+      int num_domanda= Randoms(0, upper, count);
+      punteggio += game (array[num_domanda],risposta[num_domanda]);
+    }
+  printf ("punteggio %d su %d\n\n", punteggio,numer_loop);
+
+  return 0;
+}
